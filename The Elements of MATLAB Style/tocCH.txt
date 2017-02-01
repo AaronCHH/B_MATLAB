@@ -1,0 +1,7 @@
+﻿1. General Principles
+2. Formatting
+3. Naming
+4. Documentation
+5. Programming
+6. Files and Organization
+7. Development

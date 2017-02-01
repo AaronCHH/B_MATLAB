@@ -1,0 +1,379 @@
+﻿Cover.............................................................................................  1
+Half-title........................................................................................  3
+Title.............................................................................................  5
+Copyright.........................................................................................  6
+Contents..........................................................................................  7
+Preface........................................................................................... 11
+	Audience...................................................................................... 11
+Introduction...................................................................................... 13
+	Disclaimer.................................................................................... 15
+1. General Principles............................................................................. 16
+	1. Avoid Causing Confusion.................................................................... 16
+	2. Avoid Throw-Away Code...................................................................... 17
+	3. Help the Reader............................................................................ 17
+	4. Maintain the Style of the Original......................................................... 17
+	5. Document Style Deviations.................................................................. 18
+2. Formatting..................................................................................... 19
+	Layout........................................................................................ 19
+		6. Keep Content Within the First Eighty Columns........................................... 19
+		7. Split Long Code Lines at Graceful Points............................................... 20
+		8. Indent Statement Groups Three or Four Spaces........................................... 20
+		9. Indent Consistently with the MATLAB Editor............................................. 21
+		10. Do Not Use Hard Tabs.................................................................. 21
+		11. Put Only One Executable Statement in a Line of Code................................... 22
+		12. Define Each Variable on a Separate Line............................................... 22
+		13. Use Argument Alignment if it Enhances Readability..................................... 23
+		14. Avoid Heavily Nested Code............................................................. 24
+	White Space................................................................................... 24
+		15. Include White Space................................................................... 24
+		16. Surround =, &, |, &&, and || by Spaces................................................ 24
+		17. Use White Space Around Operators When it Enhances Readability......................... 25
+		18. Follow Commas with a Space When it Enhances Readability............................... 26
+		19. Insert Spaces for Multiple Commands in One Line....................................... 26
+		20. Do Not Put Spaces Just Inside Parentheses............................................. 27
+		21. Do Not Follow Function Names With a Space............................................. 27
+		22. Do Not Space Out Semicolons at the End of Lines....................................... 27
+	Code Blocks................................................................................... 27
+		23. Break Code of Any Appreciable Length into Blocks...................................... 27
+		24. Separate Logical Groups of Statements Within a Block by One Blank Line................ 28
+		25. Separate Major Code Blocks by More Than One Blank Line................................ 28
+		26. Separate Subfunctions by More Than One Blank Line..................................... 28
+		27. Use Editor Cells...................................................................... 28
+	Formatting Summary............................................................................ 29
+3. Naming......................................................................................... 30
+	General....................................................................................... 31
+		28. Use Meaningful Names.................................................................. 31
+		29. Use Familiar Names.................................................................... 32
+		30. Use Consistent Names.................................................................. 32
+		31. Avoid Excessively Long Names.......................................................... 33
+		32. Avoid Cryptic Abbreviations........................................................... 33
+		33. Treat Familiar Acronyms as Words...................................................... 34
+		34. Avoid Names that Differ Only by Capitalization........................................ 34
+		35. Avoid Names that Differ Only by One Letter............................................ 35
+		36. Avoid Names with Hard-to-Read Character Sequences..................................... 35
+		37. Make Names Pronounceable When You Can................................................. 36
+		38. Write Names in English................................................................ 36
+	Variables and Parameters...................................................................... 36
+		39. Avoid Ambiguous or Vague Names........................................................ 36
+		40. Name According to Meaning, Not Type................................................... 37
+		41. Use Lowercase for Simple Variable Names............................................... 37
+		42. Use lowerCamelCase for Compound Variable Names........................................ 37
+		43. Use Meaningful Names for Variables with a Large Scope................................. 38
+		44. Limit Use of Very Short Names to Variables with a Small Scope......................... 38
+		45. Be Consistent With i and j............................................................ 39
+		46. Use the Prefix n for Variables Representing the Number of Entities.................... 39
+		47. Follow a Consistent Convention on Pluralization....................................... 39
+		48. Use the Prefix this for the Current Variable.......................................... 40
+		49. Use the Suffix No or Prefix i for Variables Representing a Single Entity Number....... 40
+		50. Prefix Iterator Variables with i, j, k, etc........................................... 41
+		51. Embed is, has, etc., in Boolean Variable Names........................................ 41
+		52. Avoid Negated Boolean Variable Names.................................................. 42
+		53. Use the Expected Logical Names and Values............................................. 42
+		54. Avoid Using a Keyword or Special Value Name for a Variable Name....................... 43
+		55. Avoid Hungarian Notation.............................................................. 43
+		56. Avoid Variable Names that Shadow Functions............................................ 44
+		57. Avoid Reusing a Variable for Different Contents....................................... 44
+		58. Consider a Unit Suffix for Names of Dimensioned Quantities............................ 45
+	Constants..................................................................................... 45
+		59. Use All Uppercase for Constant Names with Local Scope................................. 45
+		60. Use Function Names for Constants Defined by Functions................................. 46
+		61. Use Meaningful Names for Constants.................................................... 46
+		62. Define Related Constants Based on the Relation........................................ 47
+		63. Consider Using a Category Prefix...................................................... 47
+	Structures and Cell Arrays.................................................................... 47
+		64. Use UpperCamelCase for Structure Names................................................ 47
+		65. Do Not Include the Name of the Structure in a Fieldname............................... 47
+		66. Use Fieldnames that Follow the Naming Convention for Variables........................ 48
+		67. Name Cell Arrays Following the Style for Variables.................................... 48
+	Functions..................................................................................... 49
+		68. Give Functions Meaningful Names....................................................... 49
+		69. Name Functions for What They Do....................................................... 50
+		70. Follow a Case Convention for Function Names........................................... 50
+		71. Reserve the Prefixes get/set for Accessing an Object Property......................... 51
+		72. Use Expected Verbs in Expected Ways................................................... 51
+		73. Use the Prefix is for Boolean Functions............................................... 52
+		74. Use Complement Prefixes in Compound Names for Complement Operations................... 53
+		75. Be Selective in the Use of Numbers at the Ends of Names............................... 53
+		76. Use Numbers Inside Function Names Only for Common Conventions......................... 53
+		77. Avoid Unintentional Shadowing......................................................... 54
+	Classes....................................................................................... 54
+		78. Use Nouns When Naming Classes......................................................... 54
+		79. Use UpperCamelCase for MATLAB Class and Object Names.................................. 55
+		80. Use UpperCamelCase for Exception Names................................................ 55
+		81. Name Properties Like Structure Fields................................................. 55
+		82. Name Methods Like Functions........................................................... 56
+		83. Name Accessor Methods after their Properties.......................................... 56
+		84. Use a Single Lowercase Word as the Root Name of a Package............................. 57
+	Data Files and Directories.................................................................... 57
+		85. Use Directory and Filenames that are Easy to Work with................................ 57
+		86. Use Sortable Numbering in Data Filenames.............................................. 57
+		87. Use ISO Date Format................................................................... 59
+	Naming Summary................................................................................ 60
+4. Documentation.................................................................................. 61
+	General....................................................................................... 61
+		88. Provide Well-Written Code............................................................. 61
+		89. Document Each Module Before or During Its Implementation.............................. 61
+		90. Document the Interface for Those Who Will Use It...................................... 62
+		91. Document the Design and Implementation for Those Who Will Maintain It................. 62
+		92. Consider Documenting Some Changes in Header Comments.................................. 62
+		93. Generate HTML Reference Pages......................................................... 63
+		94. Integrate the Reference Pages with the Help Browser................................... 63
+		95. Consider Providing PDF Documentation.................................................. 63
+	Comments...................................................................................... 63
+		96. Make Comments Useful.................................................................. 64
+		97. Be Sure that Comments Agree with the Code............................................. 64
+		98. Revise Comments to be Correct When the Code is Changed................................ 65
+		99. Put Restrictions in the Code, Not the Comments........................................ 66
+		100. Clean up Commented Out Code before Release........................................... 66
+		101. Make Comments Easy to Read........................................................... 67
+		102. Write Comments for the Publish Feature............................................... 67
+		103. Minimize Use of End-Line Comments.................................................... 67
+		104. Consider End-of-Loop Comments........................................................ 68
+		105. Consider Documenting Important Variables Near the Start of the File.................. 68
+		106. Consider Documenting Constant Assignments Where They are Defined..................... 68
+		107. Use Voice and Person Appropriately................................................... 69
+		108. Use Present Tense to Describe Code................................................... 69
+		109. Use Complete Sentences in Descriptive Blocks......................................... 69
+		110. You Can Use Incomplete Sentences in One-Liners....................................... 70
+		111. Use Short Words...................................................................... 70
+		112. Eliminate Cute Comments.............................................................. 70
+		113. Minimize the Use of ASCII Art........................................................ 70
+		114. Write All Comments in English........................................................ 70
+		115. Format the Header Comments for Easy Publishing as Documentation...................... 71
+		116. Put the Header Comments in the Right Place........................................... 73
+		117. Use Title Markup for the Function Name............................................... 73
+		118. Document the Function Interface in the Syntax Section................................ 73
+		119. Use the Actual Function Name Case in Comments........................................ 74
+		120. Describe the Function Arguments in the Description Section........................... 75
+		121. Describe Any Function Side Effects................................................... 76
+		122. Describe Any Custom Exceptions that May be Generated................................. 76
+		123. Include Examples in the Header Comments.............................................. 76
+		124. Include See also in the Header Comments.............................................. 76
+		125. Avoid Clutter in the Reference Page.................................................. 77
+		126. Format Header Comments of classdef Files for the Help Browser........................ 77
+		127. Clarify Subclass Methods............................................................. 78
+		128. Indent Block Comments to Match Code.................................................. 78
+		129. Place a Blank Line or Cell Break before a Block Comment.............................. 78
+		130. Do Not Use Comment Blocks for Block Comments......................................... 79
+		131. Use Comment Block Syntax to Temporarily Bypass a Block of Code....................... 80
+		132. Indent Comments with the Code Block.................................................. 81
+		133. Do Not Follow a Single-Line Comment with a Blank Line................................ 81
+		134. Resolve TODO/FIXME Comments.......................................................... 81
+	Documentation Summary......................................................................... 81
+5. Programming.................................................................................... 83
+	General....................................................................................... 83
+		135. Avoid Cryptic Code................................................................... 83
+		136. Avoid Off-By-One Mistakes............................................................ 84
+		137. Attend to NaN Results................................................................ 84
+		138. Consider Using isfinite.............................................................. 84
+		139. Use Programming Patterns or Idioms................................................... 84
+	Variables and Constants....................................................................... 85
+		140. Do Not Reuse Variable Names Unless Required by Memory Limitation..................... 85
+		141. Beware of Mistyping Variable Names................................................... 85
+		142. Minimize the Use of Literal Numbers in Statements.................................... 86
+		143. Write Floating Point Values with a Digit Before the Decimal Point.................... 87
+		144. Avoid Showing Excessive Decimal Places............................................... 87
+		145. Avoid Mixing Units within a Program.................................................. 87
+		146. Use Caution with Floating Point Comparisons.......................................... 88
+		147. Limit Boolean Variable Values to True or False....................................... 88
+		148. Do Not Assume Array Size............................................................. 89
+		149. Use Appropriate Numerical Class Conversions.......................................... 89
+		150. Minimize the Use of Global Variables................................................. 90
+		151. Minimize the Use of Global Constants................................................. 91
+		152. Define Local Constants Only Once..................................................... 92
+		153. Do Not Declare Unrelated Variables in a Single Line.................................. 92
+	Character Strings............................................................................. 93
+		154. Consider Using strcmpi............................................................... 93
+		155. Use lower or upper When You Cannot Use strcmpi....................................... 93
+		156. Use isempty.......................................................................... 93
+		157. Use fullfile......................................................................... 94
+		158. Compute with Numbers for Speed....................................................... 94
+		159. Consider Using Character Arrays for Speed............................................ 94
+		160. Consider Using unique................................................................ 95
+	Structures.................................................................................... 95
+		161. Use Structures for Associated Data................................................... 95
+		162. Use Structures for Metadata.......................................................... 95
+		163. Organize a Structure Based on How It Will be Accessed................................ 96
+		164. Put Structure Fields in a Helpful Order.............................................. 96
+		165. Be Careful with Fieldnames........................................................... 96
+	Cell Arrays................................................................................... 97
+		166. Consider Using Cell Arrays for Strings............................................... 97
+		167. Look Out for Cells within Cells...................................................... 98
+		168. Consider Using Cell Arrays for Ragged Arrays......................................... 98
+	Expressions................................................................................... 99
+		169. Write Short Expressions.............................................................. 99
+		170. Put Numbers Before the Multiplication Operator.......................................100
+		171. Make the Denominator Clear...........................................................100
+		172. Use Parentheses......................................................................100
+		173. Use a Clear Form for Relational Expressions..........................................101
+		174. Use && or || by Default for Scalar Operands..........................................102
+	Statements....................................................................................102
+		175. Write Short Statements...............................................................102
+		176. Avoid Use of eval When Possible......................................................102
+	Loops.........................................................................................103
+		177. Initialize Loop Variables Immediately Before the Loop................................103
+		178. Initialize Using nan or false Rather Than zeros......................................104
+		179. Do Not Change the Loop Index Variable Inside a Loop..................................104
+		180. Minimize the Use of break in Loops...................................................104
+		181. Minimize the Use of continue in Loops................................................105
+		182. Avoid Unnecessary Computation within Loops...........................................106
+		183. Be Careful of Infinite while Loops...................................................107
+		184. Be Careful of Count Errors in while Loops............................................107
+	Conditionals..................................................................................108
+		185. Avoid Complicated Conditional Expressions............................................108
+		186. In General, Include an else Statement with if........................................108
+		187. Put the Normal Branch in the if Part.................................................109
+		188. Avoid Unnecessary if Constructs......................................................109
+		189. Use a Practical Order for elseif Conditions..........................................110
+		190. Avoid Unnecessary elseif Blocks......................................................110
+		191. Avoid Unnecessary Levels of Nesting in Control Structures............................111
+		192. Try to Simplify Nested if Constructs.................................................112
+		193. Avoid the Conditional Expression if 0................................................112
+		194. Include otherwise with switch Statements.............................................113
+		195. Consider Using a Cell Array to Simplify a switch Construct...........................113
+		196. Use if When the Condition is Most Clearly Written as an Expression...................114
+		197. Use switch When the Condition is Most Clearly Written as a Value.....................114
+		198. When Either if or switch Can Work, Use the More Readable One.........................114
+	Logical Functions.............................................................................115
+		199. Use logical to Cast Variables........................................................115
+		200. Use true or false Functions and Values...............................................115
+		201. In General Use isequal Rather Than ==................................................115
+	Vectorization.................................................................................116
+		202. Be Thoughtful with Vectorization.....................................................116
+		203. Use repmat...........................................................................117
+	Functions.....................................................................................117
+		204. Modularize...........................................................................117
+		205. Write Code as Functions When Possible................................................118
+		206. Write Simple Functions...............................................................118
+		207. Design for Loose Coupling............................................................118
+		208. Use Subfunctions Appropriately.......................................................119
+		209. Hide Implementation Details..........................................................119
+		210. Write for High Cohesion..............................................................119
+		211. Use Existing Functions...............................................................120
+		212. Eliminate Overlapping Functions......................................................120
+		213. Provide Some Generality in Functions.................................................120
+		214. Write a Function At One Level of Abstraction.........................................120
+		215. Write Convenience Functions..........................................................121
+		216. Make Interaction Clear...............................................................122
+		217. Name All Input Arguments.............................................................122
+		218. Write Boolean Functions to Return true or false......................................122
+		219. Make Logical Output and Function Name Consistent.....................................122
+		220. Minimize Input Flag Arguments........................................................123
+		221. Write Arguments in Useful Order......................................................123
+		222. Use Lazy Evaluation..................................................................124
+		223. Make Input and Output Arrays Consistent..............................................124
+		224. Use a Structure to Replace a Long List of Function Arguments.........................124
+		225. Consider an Options Structure........................................................125
+		226. Consider varargin and varargout......................................................125
+		227. Use Parameter-Value Pairs for Optional, Unordered Input Arguments....................126
+		228. In General, Use Caller Variable Names Consistent with the Function Argument Names....126
+		229. Define Imports Where They are Easy to Find...........................................127
+		230. Use Anonymous Functions Rather Than Inline Functions.................................127
+		231. Use Function Handles.................................................................127
+		232. Avoid Including Hidden Side Effects..................................................127
+		233. Refactor.............................................................................128
+	Input and Output..............................................................................128
+		234. Write Input Functions................................................................128
+		235. Provide Some Input Validity Checking.................................................129
+		236. Expect NaN Values in Data............................................................129
+		237. Use feof for Reading Files...........................................................129
+		238. Make Output Modules..................................................................130
+		239. Format Output for Easy Use...........................................................130
+		240. Provide for Automation...............................................................130
+	Classes and Objects...........................................................................131
+		241. Keep Classes Simple..................................................................131
+		242. Avoid Classes with Ambiguous Overlap.................................................132
+		243. Construct Valid Objects..............................................................133
+		244. Follow Constructor Conventions.......................................................133
+		245. Define Small, Simple Methods.........................................................134
+		246. Write Methods That You Can Unit Test.................................................134
+		247. Do Not Write a Method That Can Produce an Invalid Property...........................135
+		248. Avoid Incomplete Public Methods......................................................135
+		249. Try to Make Properties Private.......................................................136
+		250. Do Not Expose Properties with Behavior...............................................137
+		251. Avoid Writing Methods with Many Input Arguments......................................137
+		252. Validate Method Argument Values......................................................137
+		253. Check for a Property’s Existence Before Using It.....................................138
+		254. Refactor Repeated Code Into Methods..................................................138
+		255. Overload Standard Functions When Possible............................................138
+		256. Avoid Unconventional Usage of Overload Names.........................................138
+		257. Do not Overload && or ||.............................................................139
+		258. Do not Get Carried Away with Inheritance.............................................139
+		259. Place Method Functions in Folders Consistently.......................................139
+		260. Use Java Syntax for Java Methods.....................................................139
+	Exceptions, Errors, and Warnings..............................................................140
+		261. Use Appropriate Error Handling.......................................................140
+		262. Prepare for Errors...................................................................140
+		263. Make Error Messages Informative......................................................141
+		264. Use Message IDs with Errors and Warnings.............................................141
+		265. Use Exceptions.......................................................................141
+		266. Support Error Returns................................................................142
+		267. Use Appropriate Assertions...........................................................142
+	Output Style..................................................................................143
+		268. Learn to Use sprintf.................................................................143
+		269. Learn to Use Tex.....................................................................143
+	Tests.........................................................................................143
+		270. Write at Least One Test for Every Function or Method.................................144
+		271. Write Small Tests....................................................................144
+		272. Write Uncoupled Tests................................................................145
+		273. Write Tests with Boolean Outputs.....................................................145
+		274. Test for Expected Exceptions.........................................................145
+		275. Write Tests You Can Automate.........................................................145
+		276. Use Related Names in the Function and the Test Code..................................146
+		277. Identify Test Files by Name..........................................................146
+		278. Develop Test Patterns................................................................146
+		279. Consider Tests for External Software.................................................147
+	Data Files....................................................................................147
+		280. Make Use of mat Files................................................................147
+		281. Follow Database Conventions..........................................................147
+		282. Follow the MATLAB Convention for Data Array Orientation..............................148
+	Programming Summary...........................................................................148
+6. Files and Organization.........................................................................150
+	Toolboxes.....................................................................................150
+		284. Organize General-Purpose m-Files in Toolboxes........................................150
+		285. Put Test Files in a Separate Directory...............................................150
+		286. Consider Writing Demo Files..........................................................151
+		287. Use a Consistent Toolbox Folder Organization.........................................151
+		288. Provide for Integration with MATLAB..................................................151
+		289. Provide a Reference Page for Every Public Function...................................152
+		290. Integrate the Reference Pages with the Help Browser..................................152
+		291. Do not Make Your Toolbox a Subfolder of the MATLAB Folder............................152
+	Project Files.................................................................................152
+		292. Organize Your Project-Specific Files by Project Directory............................152
+		293. Organize Your Data Directory for Ease of Access......................................153
+	Organization Summary..........................................................................154
+7. Development....................................................................................156
+	Design........................................................................................157
+		294. Expect Change........................................................................157
+		295. Include Appropriate Flexibility......................................................157
+		296. Use the Right Algorithm..............................................................158
+		297. Program by Contract..................................................................158
+		298. Write for Automation.................................................................158
+		299. Make Associated Data Easy to Use.....................................................158
+		300. Recompute When Data Changes..........................................................158
+		301. Leave Code Optimization for Last or Never............................................159
+		302. Consider Coding Standards............................................................159
+	Development Practices.........................................................................159
+		303. Develop in Small Steps...............................................................160
+		304. Develop in the Editor................................................................160
+		305. Use Version Control..................................................................160
+		306. Run Tests Often......................................................................160
+		307. Run all Tests Before Release.........................................................160
+	MATLAB IDE Tools..............................................................................161
+		308. Try the MATLAB Editor................................................................161
+		309. Use Smart Indent.....................................................................161
+		310. Use Find and Replace.................................................................162
+		311. Pay Attention to M-Lint..............................................................162
+		312. Use Consistent Preference Settings...................................................162
+		313. Use the Debugger Effectively.........................................................162
+		314. Use the TODO/FIXME Report............................................................163
+		315. Use the Profiler.....................................................................163
+		316. Use the Dependency Report............................................................164
+		317. Publish During Development...........................................................164
+		318. Find a Desktop Layout That Works for You.............................................164
+	Development Summary...........................................................................164
+Keywords..........................................................................................167
+is∗ function list.................................................................................169
+Glossary..........................................................................................171
+Bibliography......................................................................................177
+Index.............................................................................................179

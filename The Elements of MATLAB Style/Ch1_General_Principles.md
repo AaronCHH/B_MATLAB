@@ -6,6 +6,7 @@ The interfaces and the behavior exhibited by your software must be predictable a
 If they are not, then the documentation must clearly identify and justify any unusual instances of use or behavior.  
 
 To minimize the chances that anyone would encounter some thing surprising in your software, you should emphasize the following characteristics in its design, implementation, pack aging, and documentation:  
+
 | Simplicity   | Meet the expectations of your users with simple functions classes and methods.                                        |
 |--------------|-----------------------------------------------------------------------------------------------------------------------|
 | Clarity      | Ensure that each variable function  class and method has a clear purpose.                                             |

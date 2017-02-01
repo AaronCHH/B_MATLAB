@@ -37,6 +37,7 @@
     * [56. Avoid Variable Names that Shadow Functions](#56-avoid-variable-names-that-shadow-functions)
     * [57. Avoid Reusing a Variable for Different Contents](#57-avoid-reusing-a-variable-for-different-contents)
     * [58. Consider a Unit Suffix for Names of Dimensioned Quantities Constants](#58-consider-a-unit-suffix-for-names-of-dimensioned-quantities-constants)
+  * [Constants](#constants)
     * [59. Use All Uppercase for Constant Names with Local Scope](#59-use-all-uppercase-for-constant-names-with-local-scope)
     * [60. Use Function Names for Constants Defined by Functions](#60-use-function-names-for-constants-defined-by-functions)
     * [61. Use Meaningful Names for Constants](#61-use-meaningful-names-for-constants)
@@ -96,14 +97,14 @@ This section describes a commonly used convention that is familiar to many progr
 
 
 ## General
-The names of identifiers trigger associations.  
+> The names of identifiers trigger associations.  
 Good identifier names aid comprehension of both the thing named and the associated code structure.  
 Good names are very helpful to both the reader and the programmer.  
 However, coming up with good names is not easy.  
 Keep trying until you get them right.  
 If you change the definition or usage of a variable or function so that its name becomes misleading or wrong, then rename it.  
 
-To reduce confusion, identifier names should look dissim ilar without intensive inspection.  
+> To reduce confusion, identifier names should look dissim ilar without intensive inspection.  
 Names should be easy to remember and easy to associate with a meaning.  
 They should also be responsive to their environment (not too short or long).  
 Trade-offs are likely to be required.  
@@ -276,6 +277,9 @@ The MATLAB product is written in English, and English is the preferred language 
 
 ---
 ## Variables and Parameters
+> Variable names should be easily remembered by the programmer and have a suggestive value for readers; that is, they should help us recognize the meanings of the variables.  
+They should also be consistent with the names of similar variables.  
+
 
 ### 39. Avoid Ambiguous or Vague Names
 A good name distinguishes one variable from another.  
@@ -285,6 +289,7 @@ If used, they should be limited to very small scope.
 
 Be selective in the use of numbers at the ends of names.  
 The appearance of numbers at the ends of variable names often indicates poor naming.   
+
 Replace  
 ```matlab  
 length1, length2  
@@ -467,75 +472,624 @@ This convention avoids confusion with or shadowing of Boolean function names, wh
 
 
 ### 52. Avoid Negated Boolean Variable Names
+A problem arises when such a name is used in conjunction with the logical negation operator because this usage results in a double negative.  
+It is not immediately apparent what is meant by names such as  
+``` matlab  
+∼barIsNotFound  
+```  
+Replace  
+``` matlab  
+barIsNotFound = true;  
+```  
+with  
+``` matlab  
+barIsFound = false;  
+```  
+so that you can use  
+```matlab  
+∼barIsFound  
+```  
+
 
 ### 53. Use the Expected Logical Names and Values
+A true or valid condition is usually associated with a positive integer or a logical true; a false or invalid condition is usu ally associated with zero or a logical false.  
+To avoid violating expectations, replace the misleading and error-prone usage  
+```matlab  
+valid = 0;  
+```  
+with  
+```matlab  
+valid = true;  
+```  
+MATLAB associates any nonzero number, even a negative one, with a true condition.  
+It is generally poor practice to rely on this somewhat confusing behavior.  
+
+
 
 ### 54. Avoid Using a Keyword or Special Value Name for a Variable Name
+Reserved words have special meaning and can only be used in specific ways.  
+MATLAB can produce cryptic error messages or strange results if any of its reserved words or built-in special values are redefined.  
+M-Lint will usually catch an attempt to redefine a keyword, but not if this is done inside an eval statement.  
+Reserved words are listed by the command ___iskeyword___.  
+Special values are listed in the MATLAB release documentation.  
+
+Also avoid using a variable name that differs from a keyword or special value only by capitalization or a single letter.  
+The code may work, but it can be difficult to read  
 
 ### 55. Avoid Hungarian Notation
+A Hungarian variable name typically involves one or two prefixes, a name root, and a qualifier suffix.  
+These names can be ugly, particularly when they are strings of contractions or abbreviations.  
+A bigger problem occurs if a prefix, as is sometimes suggested, encodes data type.  
+If the type needs to be changed, then all incidences of the variable name need to be changed.  
+Use  
+```matlab  
+thetaDegrees  
+```  
+Avoid  
+```matlab  
+uint8thetaDegrees  
+```  
+Because the Workspace browser lists type, Hungarian notation no longer adds value.  
+
+A related MATLAB-specific practice is the use ofvec as a pre fix or suffix.  
+This practice can be problematic if use of the vari able changes to include, for example, two-dimensional arrays.  
 
 ### 56. Avoid Variable Names that Shadow Functions
+There are several names of functions in the MATLAB product that seem to be tempting to use as variable names.  
+Such usage in scripts will shadow the functions and can lead to errors.  
+Using a variable and a function with the same name inside a function will probably cause an error.  
+
+__Some standard function names that have appeared in code examples as variables are__  
+``` matlab  
+alpha, angle, axes, axis, balance, beta, contrast,  
+gamma, image, info, input, length, line, mode,  
+power, rank, run, start, text, type  
+```  
+Using a well-known function name as a variable name also reduces readability.  
+If you want to use a standard function name such as length in a variable name, then you can add a qualifier, such as a units suffix, or a noun or adjective prefix:  
+```matlab  
+lengthCm, armLength, thisLength  
+```  
 
 ### 57. Avoid Reusing a Variable for Different Contents
+When a variable is reused, its purpose is unlikely to be clear from its name.  
+Reusing a temporary variable in multiple places for different contents can make reworking the code difficult.  
+Reuse variables only if memory is a constraint.  
+If you change the meaning of a variable, then also change its name.  
+
+Similarly, avoid giving two interpretations to a single variable, such as a hidden meaning as well as a normal meaning.  
+It would be poor practice to use the variable pageCount for a page count, except when it is negative, indicating that it is an error flag.  
 
 ### 58. Consider a Unit Suffix for Names of Dimensioned Quantities Constants
+Using a single set of units for a project is an attractive idea that is often not implemented completely.
+Adding unit suf fixes helps avoid the almost inevitable unintended mixed-unit expressions or unintended computed results.
+Do not use an ambiguous single-letter suffix.
+Replace
+```matlab
+angleR, angleD
+```
+with
+```matlab
+angleRadians, angleDegrees
+```
+If you do not use a unit suffix, then consider including the units in a comment to reduce possible confusion.
+
+## Constants
+> The MATLAB language does not have true constants (at least outside objects).  
+We use naming conventions to provide a visual cue that a variable is being treated as a constant.  
+The main goal in this case is to try to avoid unintentional redefinition of the constant.  
+The best naming and usage practices can depend on the scope of the constant.  
 
 ### 59. Use All Uppercase for Constant Names with Local Scope
+Constants specific to a single m-file are usually defined in the code and written in uppercase.  
+If the constant has a compound name, then use an underscore as a separator.  
+This is common practice in the C++ and Java development communities, when the constant is only used within a file:  
+```matlab  
+MAX_ITERATIONS, CODE_RED  
+```  
+__Never use sequential underscore characters because they are too difficult to read correctly.__  
+
+Lowercase names can be used in domain-specific applications if the most common representation of the constant is in lowercase.  
+For example, you can use c for the speed of light or h for the Planck constant.  
+
 
 ### 60. Use Function Names for Constants Defined by Functions
+Universal or natural constants such as pi are often defined by a function in MATLAB and written in lowercase.  
+Each constant is the output of a function with the same name as the constant.  
+This practice makes it easy to avoid most of the problems with global constants.  
+__It is also graceful in expressions.__  
+```matlab  
+2*pi  
+```  
+
 
 ### 61. Use Meaningful Names for Constants
+As with variable names, the goal is to make it easier for the reader to remember what the name means.  
+Name constants based on significance, not value.  
+Replace  
+```matlab  
+TEN = 10;  
+```  
+With  
+```matlab  
+MAX_ITERATIONS = 10;  
+```  
+Very short constant names can be used if they are conventional usage and unlikely to be confusing to a reader.  
+An example is E for Young's modulus.  
 
 ### 62. Define Related Constants Based on the Relation
+Defining related constants independently can lead to inconvenient problems with precision.  
+Replace  
+```matlab  
+TWO_PI = 6.283185  
+```  
+with  
+```matlab  
+TWO_PI = 2*pi;  
+```  
+  
+### 63. Consider Using a Category Prefix 
 
-### 63. Consider Using a Category Prefix ## Structures and Cell Arrays
+You can prefix the names of constants with their common cat egory.  
+This gives additional information on which constants belong together and what concept the constants represent:  
+```matlab  
+CODE_RED, CODE_GREEN, CODE_BLUE  
+```  
+
+## Structures and Cell Arrays
 
 ### 64. Use UpperCamelCase for Structure Names
 
+The UpperCamelCase style starts5 each word in a compound name with an uppercase letter, including the first word.  
+The use of capital letters makes it easier to recognize the individual words in the variable name.  
+This usage is consistent with Java and C++ practice, and it helps distinguish between structures and other arrays:  
+```matlab  
+Setup.comment = ' This is a test. ' ;  
+```
 ### 65. Do Not Include the Name of the Structure in a Fieldname
-
+The name of the structure is implicit. Repetition is superfluous in use.  
+Replace  
+``` matlab  
+Segment.segmentWidth  
+```  
+or  
+```matlab  
+Segment.widthSegment  
+```  
+with  
+``` matlab  
+Segment.width  
+```  
+  
 ### 66. Use Fieldnames that Follow the Naming Convention for Variables
+Structures are convenient for passing variables into and out of functions.  
+Using fieldnames that are the same as variable names enhances readability and reduces the likelihood of typos:  
+```matlab  
+Data.unit = unit;  
+function Result = convert(Data)  
+    unit = Data.unit;  
+    :  
+end  
+```  
+is easier to write correctly than using a capitalized fieldname:  
+``` matlab  
+Data.Unit = unit;  
+function Result = convert(Data)  
+    unit = Data.Unit;  
+    :  
+end  
+```  
+Using fieldnames that are the same as variable names also enables automated packing and unpacking of the structures.  
 
-### 67. Name Cell Arrays Following the Style for Variables ## Functions
+### 67. Name Cell Arrays Following the Style for Variables 
+The names of cell arrays should follow the convention for simple variables and arrays.  
+Remember that the goal of different naming styles is to help the reader understand the code.  
+Because cell arrays use numbered cells, they are more similar to arrays than structures:  
+```matlab  
+greetings{1} = ' hello' ;  
+```  
+## Functions
+> Functions are one of the most important and widespread components of MATLAB code.  
+Making their names easy to scan and understand is critical to readability.  
+Try to use function names that succinctly convey what the functions do and suggest how to use them.  
+  
+> A good function name abstracts the details of the function in a way that enhances the readability of a calling function’s code without being misleading or confusing.  
+The selection of a useful name depends on what the function does and what (if anything) it returns.  
 
 ### 68. Give Functions Meaningful Names
+The purpose of a well-named function or method can often be determined just from its name.  
+There is an unfortunate MATLAB tradition of using function names so short that they are cryptic, possibly due to the former DOS eight-character limit for filenames.  
+This concern is no longer relevant and the tradition should usually be avoided to improve readability.  
+Replace  
+```matlab  
+Compwid  
+```  
+with  
+``` matlab  
+computehalfwidth  
+```  
+or  
+``` matlab  
+computeHalfWidth  
+```  
+An exception is the use of abbreviations or acronyms widely used in mathematics or in the problem domain:  
+``` matlab  
+max, gcd  
+```  
+Functions with such shortened names should have the complete words in header comments for clarity and to support Help browser searches.  
+
 
 ### 69. Name Functions for What They Do
+Functions usually perform an action.  
+Naming the function after this action increases readability, making it clear what the function should (and possibly should not) do.  
+Also, this usage can make it easier to keep the code clean of unintended side effects.  
+Typically, function names should start with a verb:  
+```matlab  
+plot, reviseforecast  
+```  
+You can also name functions for their output.  
+This practice is appropriate if the name would otherwise begin with a com mon computing verb such as compute or find.  
+Naming a mathematical or statistical function for its output is common practice in MATLAB code:  
+```matlab  
+mean, standarderror, localmaxima  
+```
+
 
 ### 70. Follow a Case Convention for Function Names
+Using lowercase for function names is standard practice by The MathWorks and most MATLAB authors.  
+It works well for single-word names and reasonably well for short com pound names.  
+This practice also helps distinguish function names from lowerCamelCase variable names or UpperCamel Case object names.  
+Using all lowercase also avoids potential filename problems in mixed operating system environments:  
+``` matlab  
+removebias, adjustbins  
+```  
+Using lowerCamelCase for compound function names is the usual practice in other modern languages.  
+It is also becoming more common in code written by The MathWorks and some MATLAB authors.  
+This practice is especially popular for func tions that are class methods.  
+Function names often begin with a verb, which helps distinguish them from variable names.  
+For longer compound names, lowerCamelCase is more readable than all lowercase:  
+```matlab  
+removeVaryingBias, adjustHistogramBins  
+```  
+These are the preferred conventions, and their use can be mixed.  
+  
+Two other function name practices are sometimes used.  
+Some programmers use UpperCamelCase.  
+This usage is nonstan dard and can cause confusion with class and object naming.  
+A few programmers use underscores in compound function names.  
+This practice is nonstandard.  
+Because it is unexpected, it can actually be more difficult to scan than lowerCamelCase.  
+The underscores are also invisible in the hyperlinks used in reference pages and help output.  
+These two practices should not be used, and, in particular, they should not be mixed with the preferred conventions.  
+
 
 ### 71. Reserve the Prefixes get/set for Accessing an Object Property
+This is the general practice in code written by The Math Works and common practice in C++ and Java development.
+An occasional exception is the use ofset for logical set operations:
+```matlab
+getobject, setappdata
+```
 
 ### 72. Use Expected Verbs in Expected Ways
+Consistent use of verbs enhances readability and gives the reader an immediate clue about the task of the function.  
+Consider using compute when something is calculated:  
+``` matlab  
+Computespreads  
+```  
+The use of comp as a prefix should be avoided because it can be confused with compare.  
+Consider using the word find for a search or lookup operation.  
+Consistent use of the term enhances readability and it is a good substitute for the overused and possibly misleading prefix get:  
+``` matlab  
+findOldestRecord, findTallestMan  
+```  
+Consider the prefix initialize when a variable is estab lished.  
+Avoid the abbreviation init because it could represent either initialize or initial:  
+```matlab  
+initializeState  
+```  
+
 
 ### 73. Use the Prefix is for Boolean Functions
+This is common practice in MATLAB code as well as in C++ and Java.  
+Replace
+``` matlab
+checkforoverpriced
+completion
+```
+with
+``` matlab
+isoverpriced
+iscomplete
+```
+There are a few alternatives to the is prefix that fit better in some situations.
+These include the has or can prefixes:
+``` matlab
+haslicense
+canevaluate
+```
+A Boolean function can be visually distinguished from a Boolean variable in that the is term is a prefix for functions, but it is embedded for variables.
+Many Boolean functions are available in the MATLAB product.
+To avoid shadowing them, search the documentation for is∗.
+
+Avoid using the word status in a Boolean function name because it can easily be ambiguous.
+Replace
+``` matlab
+licensestatus
+```
+with
+```matlab
+haslicense
+```
+  
 
 ### 74. Use Complement Prefixes in Compound Names for Complement Operations
-
+Reduce readability challenges by taking advantage of symmetry.  
+Use prefixes such as  
+```matlab
+get/set, add/subtract, create/destroy, start/stop, insert/delete, increment/decrement, begin/end, open/close, show/hide, suspend/resume
+```
 ### 75. Be Selective in the Use of Numbers at the Ends of Names
+Do not use a number at the end of a function name to indicate revision.  
+This would require continual modification of calling function code with each function name revision.  
+Such usage would also raise the issue for the reader of whether older versions are of value. Avoid  
+```matlab  
+foo1, foo2, foo3  
+```  
+Limit numbers at the end of function names to current func tions that have different arguments, especially when the func tions work for differing dimensionality. For example,  
+```matlab  
+interp, interp2, interp3  
+```  
 
 ### 76. Use Numbers Inside Function Names Only for Common Conventions
+It is common practice to use the numeral 2 in place of to.  
+The use of other numbers is unusual:  
+``` matlab  
+str2mat, struct2cell  
+```  
+It can be a better practice to replace functions that would use this naming convention with functions that take advantage of polymorphism.  
+For example,  
+``` matlab  
+daily2monthly, yearly2monthly  
+```  
+might be better as a single function  
+```matlab  
+tomonthly  
+```  
 
-### 77. Avoid Unintentional Shadowing Classes
+### 77. Avoid Unintentional Shadowing
+In general, function names should be unique.  
+Shadowing (having two or more functions with the same name) increases the possibility of unexpected behavior or error.  
+Some of these shadowing names that have unfortunately been used in MATLAB code examples are  
+``` matlab  
+angle, contrast, length, power, rank, type  
+```  
+Names can be checked for shadowing using the commands  
+```matlab  
+which -all, or exist.  
+```  
+If you do choose to use an existing function name for your function, then put it in a private folder so that execution will not depend on the order of folders in the MATLAB path.  
+
+## Classes
+> The use of MATLAB and Java objects is becoming more common in MATLAB code.  
+Follow the Java style conventions for objects and functions to provide consistency and ease of recognition.  
+See The Elements of Java Style for additional specific guidelines.  
 
 ### 78. Use Nouns When Naming Classes
-
+Classes define objects or things.  
+Use nouns, adjectives with nouns, or noun phrases for their names. Avoid using verbs.  
+For example,  
+```matlab  
+Customer, Company, StockMarket  
+```  
+  
 ### 79. Use UpperCamelCase for MATLAB Class and Object Names
+This usage is consistent with Java practice and with recent usage by The MathWorks.  
+For example, use the class name  
+```matlab  
+AccountManager  
+```  
+with the object instantiation  
+```matlab  
+Robert = AccountManager( ...);  
+```  
 
 ### 80. Use UpperCamelCase for Exception Names
+Exceptions are classes, so use the same naming convention.  
+If the exception is an error, then you may choose to append the suffix Error.  
+This usage is consistent with Java practice and with recent usage by The MathWorks:  
+```matlab  
+try  
+    :  
+catch KeyError  
+    :  
+End  
+```  
+
 
 ### 81. Name Properties Like Structure Fields
+Use class property names that follow the guidelines for struc ture fieldnames and variable names.  
+In particular, use mean ingful names written in lowerCamelCase.  
+Do not repeat the class name in the property name.  
+Replace generic names such as  
+```matlab  
+Picture.prop1  
+```  
+with meaningful names such as  
+``` matlab  
+Picture.contrast  
+```  
+Use lowerCamelCase for compound property names.  
+Replace 
+```matlab
+Customer.LastOrder
+```
+or 
+```matlab
+Customer.last_order 
+```
+with  
+``` matlab  
+Customer.lastOrder  
+```  
+Do not include the class name in the property name.  
+Replace the redundant property name 
+```matlab
+Picture.PictureContrast 
+```
+with  
+``` matlab  
+Picture.contrast  
+```  
 
 ### 82. Name Methods Like Functions
+Most methods are implemented as functions and should follow the same conventions for capitalization.  
+A common practice is to use lowercase for short method names and lowerCamelCase for longer method names.  
+The constructor method is a special case that uses UpperCamelCase because it must have the same name as its class.  
+  
+Methods perform actions and should be named with action  
+words:  
+``` matlab  
+Amplitude.normalize  
+```  
+Avoid redundant method names. The class name is implicit and does not need to be repeated. Replace  
+``` matlab  
+Result.updateresult  
+```  
+with  
+```matlab  
+Result.update  
+```  
+
 
 ### 83. Name Accessor Methods after their Properties
+Getters are methods that return the value of a property.  
+You should name a getter method by prefixing the word get to the name of the property, unless it is Boolean.  
+In that case, you prefix is to the name of the field instead of get:  
+```matlab  
+getStamp, isValid  
+```  
+Setters are methods that modify the values of a property.  
+You should name a setter method by prefixing the word set to the name of the property, regardless of its type:  
+```matlab  
+setStamp, setComment  
+```  
 
 ### 84. Use a Single Lowercase Word as the Root Name of a Package Data Files and Directories
-
+The qualified portion of a package name should consist of a single word that captures the purpose and utility of the package.  
+You can also use a meaningful abbreviation that is common in the project domain.  
+  
 ### 85. Use Directory and Filenames that are Easy to Work with
+Avoid embedded spaces in compound directory and filenames because they can cause difficulties or require special handling in some operating systems.  
+Instead, use the underscore character or hyphen.  
+  
 
 ### 86. Use Sortable Numbering in Data Filenames
+Data file and directory names often have a meaningful order, either by sequence or date.  
+The MATLAB dir function and Current Folder window sort filenames in character order, which may not always be the best.  
+For example, data11.mat would be displayed before data2.mat.  
+A simple way around this behavior is to add a large base number so that  
+```matlab  
+data2.mat  
+```  
+becomes  
+``` matlab  
+data102.mat  
+```  
+and  
+``` matlab  
+data11.mat  
+```  
+becomes  
+``` matlab  
+data111.mat  
+```  
+This format is easily generated in a MATLAB for loop with index iFile as  
+``` matlab  
+base = 100;  
+for iFile = 1:nFiles  
+    fileNo = base+iFile;  
+    filename = [' data' int2str(fileNo) ' .mat' ];  
+        :  
+end  
+```  
+Another technique is to include leading zeros as needed so that  
+``` matlab  
+data2.mat  
+```  
+becomes  
+``` matlab  
+data02.mat  
+```  
+This approach requires a little more work to generate:  
+``` matlab  
+filename = [' data' ...  
+sprintf(' %02.0f' , iFile) ' .mat' ];  
+```
+
 
 ### 87. Use ISO Date Format
+It is less ambiguous than other date formats because the fields are in an internationally recognized order, with a standard for embedded punctuation.    
+ISO 8601 format sorts well; for example, 2007-01-31 comes before 2007-02-01.  
+The embed ded hyphen (-) is an allowed character in filenames.  
+  
+Other date formats often use month names that vary with language and do not sort well.  
+The slash character (/) used in some other formats is not legal in a file or directory name.  
+  
+Replace  
+```matlab  
+dataJan121999.mat or data12Jan1999.mat  
+```  
+with  
+```matlab  
+data1999-01-12.mat 
+```  
+or 
+```matlab
+data_1999-01-12.mat  
+```
+These ISO filenames can be easily generated in a loop for file access:  
+``` matlab  
+mainPart = ' data' ;  
+year = 1999;  
+month = 1;  
+day = [1:5];  
+formatSpec = 29;  
+for iDay = 1:length(day)  
+    dateNo = datenum([year month day(iDay)]);  
+    datePart = datestr(dateNo, formatSpec);  
+    filename = [mainPart datePart ' .mat' ];  
+end  
+```  
+If needed, a month name can be interpreted or produced using the month numbers to index into a cell array:  
+``` matlab  
+monthNames = {' JAN' , ' FEB' , ' MAR' , ' APR' , ' MAY' , ' JUN' , ' JUL' , ' AUG' , ' SEP' , ' OCT' , ' NOV' , ' DEC' }  
+```  
+  
 
 ## Naming Summary
+> __Enhance readability by using meaningful, consistent names.__  
+Make names easy to recognize and distinguish so that you are likely to use and type them correctly.  
+Avoid names that are vague, misleading, too similar, or difficult to read.  
+  
+> __Use capitalization to suggest the role of identifiers such as variables, functions, or classes.__  
+Follow the conventions that are common and successful in MATLAB and other languages.  
+Use similar capitalization for similar entities such as functions and methods or variables and properties.  
+  
+> __Append prefixes and suffixes if they clarify the meaning or use of a name.__  
+Follow common software usages.  
+Avoid prefixes and suffixes that are likely to be distracting or cause maintenance issues.  
+  
+> __Avoid name collisions, especially when your variable or function names would shadow existing functions.__  
+Use constant names and definitions that discourage unintentional redefinition.  
+  
+> __Use variable names that mean what they say.__  
+Include standard prefixes and suffixes when they help communicate the role of the variable.  
+Use lowerCamelCase for variable names.  
+  
+> __Name functions for the action they perform or the output they produce.__  
+Use standard prefixes such as is or get in expected ways.  
+Do not include temporary or ill-defined version numbering in function names.  
+  
+> __Use nouns for the names of classes and objects.__  
+Write them in UpperCamelCase.  
+

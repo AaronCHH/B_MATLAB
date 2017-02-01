@@ -1,4 +1,18 @@
 # 1. General Principles
+
+
+<!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+* [1. General Principles](#1-general-principles)
+  * [1. Avoid Causing Confusion](#1-avoid-causing-confusion)
+  * [2. Avoid Throw-Away Code](#2-avoid-throw-away-code)
+  * [3. Help the Reader](#3-help-the-reader)
+  * [4. Maintain the Style of the Original](#4-maintain-the-style-of-the-original)
+  * [5. Document Style Deviations](#5-document-style-deviations)
+
+<!-- tocstop -->
+
+
 ## 1. Avoid Causing Confusion
 
 Avoid doing things that would be an unpleasant surprise to other software developers.  
@@ -47,7 +61,7 @@ If you make changes, then be sure to run regression tests and any existing softw
 _**No standard is perfect, and no standard is universally applicable.**_  
 Sometimes you will find yourself in a situation where you need to deviate from an established standard.  
 If so, then strive for clarity and consistency.  
-  
+
 Before you decide to ignore a rule, you should first make sure you understand why the rule exists and what the conse quences are if the rule is not applied.  
 If you decide you must violate a rule, then document why you have done so.  
 Some organizations will have reasons to deviate from some of these guidelines, but most organizations will benefit from adopting written style guidelines.  

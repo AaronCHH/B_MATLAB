@@ -1,12 +1,25 @@
 
 # 1 From Formula to Program 1
 
+<!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+* [1 From Formula to Program 1](#1-from-formula-to-program-1)
+  * [1.1 Just Plug It In! 3](#11-just-plug-it-in-3)
+    * [Surface Area of a Sphere](#surface-area-of-a-sphere)
+    * [Matlab: Arithmetic expressions, assignment, input, output](#matlab-arithmetic-expressions-assignment-input-output)
+  * [1.2 Check and Evaluate 14](#12-check-and-evaluate-14)
+    * [Minimum of a Quadratic on an Interval](#minimum-of-a-quadratic-on-an-interval)
+    * [Matlab: Boolean expressions, conditionals](#matlab-boolean-expressions-conditionals)
+
+<!-- tocstop -->
+
+
 ## 1.1 Just Plug It In! 3
 
 ### Surface Area of a Sphere
 
 
-```python
+```matlab
 # %load C1/SurfArea.m
 % The Script SurfArea
 
@@ -17,7 +30,7 @@ fprintf('r = %10.3f A = %10.3e\n', r, A)
 ```
 
 
-```python
+```matlab
 # %load C1/Eg1_1.m
 % Script Eg1_1
 % Spherical Surface Area Increase
@@ -53,7 +66,7 @@ fprintf('   Method 3: %15.6f square meters\n',delta_A3)
 ### Minimum of a Quadratic on an Interval
 
 
-```python
+```matlab
 # %load C1/Eg1_2.m
 % Script Eg1_2
 % Minimum of the quadratic x^2 + bx + c on the interval [L,R].
@@ -89,6 +102,6 @@ end
 ### Matlab: Boolean expressions, conditionals
 
 
-```python
+```matlab
 
 ```

@@ -1,9 +1,30 @@
 
 # A Refined Graphics
+
+<!-- toc orderedList:0 depthFrom:1 depthTo:6 -->
+
+* [A Refined Graphics](#a-refined-graphics)
+  * [A.1 Scaling Axes](#a1-scaling-axes)
+  * [A.2 Setting and Labelling Axis Ticks](#a2-setting-and-labelling-axis-ticks)
+  * [A.3 Fancy Labelling](#a3-fancy-labelling)
+  * [A.4 Aligning Text](#a4-aligning-text)
+  * [A.5 Freezing Axis Scaling](#a5-freezing-axis-scaling)
+  * [A.6 Fonts](#a6-fonts)
+  * [A.7 Greek Symbols](#a7-greek-symbols)
+  * [A.8 Mathematical Symbols](#a8-mathematical-symbols)
+  * [A.9 Legends](#a9-legends)
+  * [A.10 Marker Size](#a10-marker-size)
+  * [A.11 Line Width](#a11-line-width)
+  * [A.12 Window Colors](#a12-window-colors)
+  * [A.13 Positioning the Figure Window](#a13-positioning-the-figure-window)
+
+<!-- tocstop -->
+
+
 ## A.1 Scaling Axes
 
 
-```python
+```matlab
 # %load Graphics/ShowAxisStyles.m
 % Script File: ShowAxisStyles
 % How to scale the axes.
@@ -51,7 +72,7 @@ title('axis([-1.2 1.2 -1.2 1.2]); axis square','Fontsize',14)
 ## A.2 Setting and Labelling Axis Ticks
 
 
-```python
+```matlab
 # %load Graphics/ShowTicks.m
 % Script File: ShowTicks
 % How to set and label axis ticks.
@@ -76,7 +97,7 @@ shg
 ## A.3 Fancy Labelling
 
 
-```python
+```matlab
 # %load Graphics/ShowFancyLabelling.m
 % Script File: ShowFancyLabelling
 % How to label points with subcripted variable names.
@@ -107,7 +128,7 @@ text(0,-.4*r,'^{1} A hexagon has six sides.',HA,'center','FontSize',10)
 ## A.4 Aligning Text
 
 
-```python
+```matlab
 # %load Graphics/ShowTextAlignment.m
 % Script File: ShowTextAlignment
 % How to place text relative to a coordinate point.
@@ -167,7 +188,7 @@ shg
 ## A.5 Freezing Axis Scaling
 
 
-```python
+```matlab
 # %load Graphics/ShowManual.m
 % Script File: ShowManual
 % How to freeze axes.
@@ -206,7 +227,7 @@ shg
 ## A.6 Fonts
 
 
-```python
+```matlab
 # %load Graphics/ShowFonts.m
 % Script File: ShowFonts
 % How choose a font, a size, a weight, and an angle.
@@ -247,7 +268,7 @@ end
 ## A.7 Greek Symbols
 
 
-```python
+```matlab
 # %load Graphics/ShowGreek.m
 % Script File: ShowGreek
 % How to produce Greek letters.
@@ -306,7 +327,7 @@ shg
 ## A.8 Mathematical Symbols
 
 
-```python
+```matlab
 # %load Graphics/ShowMathSymbols.m
 % Script File: ShowMathSymbols
 % How to produce math symbols.
@@ -324,7 +345,7 @@ y = 4.6; y1 = y+.7;
 z = 9; z1 = z+.7;
 n = 12;
 
-text(y,9,'\leftarrow :');       text(y1,9,'\\leftarrow') 
+text(y,9,'\leftarrow :');       text(y1,9,'\\leftarrow')
 text(y,8,'\rightarrow :');      text(y1,8,'\\rightarrow')
 text(y,7,'\uparrow :');         text(y1,7,'\\uparrow')
 text(y,6,'\downarrow :');       text(y1,6,'\\downarrow')
@@ -366,7 +387,7 @@ shg
 ## A.9 Legends
 
 
-```python
+```matlab
 # %load Graphics/ShowLegend.m
 % Script File: ShowLegend
 % How to position a legend.
@@ -398,7 +419,7 @@ end
 ## A.10 Marker Size
 
 
-```python
+```matlab
 # %load Graphics/ShowMarkerSize.m
 % Script File: ShowMarkerSize
 % How to draw markers with specified size.
@@ -437,7 +458,7 @@ set(gcf,'position',[50 50 800 800])
 ## A.11 Line Width
 
 
-```python
+```matlab
 # %load Graphics/ShowLineWidth.m
 % Script File: ShowLineWidth
 % How to draw lines with specified width.
@@ -466,7 +487,7 @@ hold off
 ## A.12 Window Colors
 
 
-```python
+```matlab
 # %load Graphics/ShowWindowColor.m
 % Script File: ShowWindowColor
 % How to color the plot and figure windows.
@@ -494,7 +515,7 @@ set(gca,'xcolor',[1 1 1], 'ycolor',[1 1 1],'fontsize',14)
 ## A.13 Positioning the Figure Window
 
 
-```python
+```matlab
 # %load Graphics/ShowPosition.m
 % Script File: ShowPosition
 % How to position the current figure window.
@@ -544,6 +565,6 @@ end
 ```
 
 
-```python
+```matlab
 
 ```
